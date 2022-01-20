@@ -1,0 +1,8 @@
+Manager.archive_type = @GridArchive
+Manager.emitter_types = [(@GaussianEmitter, 1)]
+Manager.is_dqd = False
+Manager.use_td3 = False
+Manager.call_jacobian = False
+
+GaussianEmitter.sigma0 = 0.02
+GaussianEmitter.batch_size = 100

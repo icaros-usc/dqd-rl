@@ -1,0 +1,3 @@
+include "config/qd_half_cheetah/shared.gin"
+include "config/algorithms/map_elites.gin"
+experiment.name = "MAP-Elites QD Half-Cheetah"

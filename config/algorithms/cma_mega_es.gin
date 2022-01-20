@@ -1,0 +1,23 @@
+# CMA-MEGA with sampled gradients.
+Manager.archive_type = @GridArchive
+Manager.emitter_types = [(@GradientImprovementEmitter, 1)]
+Manager.is_dqd = True
+Manager.use_td3 = False
+Manager.call_jacobian = False
+
+GradientImprovementEmitter.sigma_g = 1.0
+GradientImprovementEmitter.stepsize = 1.0
+GradientImprovementEmitter.selection_rule = "mu"
+GradientImprovementEmitter.gradient_optimizer = "gradient_ascent"
+GradientImprovementEmitter.normalize_gradients = True
+GradientImprovementEmitter.bounds = None
+# Add 1 since we evaluate one solution for the gradient.
+GradientImprovementEmitter.batch_size = 99
+
+GradientImprovementEmitter.gradient_source = "sample"
+GradientImprovementEmitter.sample_insert = False
+GradientImprovementEmitter.sample_sigma = 0.02
+GradientImprovementEmitter.sample_mirror = True
+# 100 + 99 + 1 = 200 evals per generation.
+GradientImprovementEmitter.sample_batch_size = 100
+GradientImprovementEmitter.sample_rank_norm = True

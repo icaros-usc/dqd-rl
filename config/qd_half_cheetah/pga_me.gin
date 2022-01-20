@@ -1,0 +1,3 @@
+include "config/qd_half_cheetah/shared.gin"
+include "config/algorithms/pga_me.gin"
+experiment.name = "PGA-ME QD Half-Cheetah (100 batch size)"

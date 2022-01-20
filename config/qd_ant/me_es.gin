@@ -1,0 +1,3 @@
+include "config/qd_ant/shared.gin"
+include "config/algorithms/me_es.gin"
+experiment.name = "ME-ES QD Ant"

@@ -1,0 +1,8 @@
+# Configuration for matplotlib - see
+# https://matplotlib.org/stable/tutorials/introductory/customizing.html
+
+backend: Agg
+
+# TrueType fonts - see http://phyletica.org/matplotlib-fonts/
+pdf.fonttype: 42
+ps.fonttype: 42

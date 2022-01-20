@@ -1,0 +1,15 @@
+# TD3 configuration for experiments that use it.
+TD3Config.buffer_size = 1_000_000
+# CMA-MEGA (TD3, ES) uses double batch size compared to PGA-MAP-Elites, so we
+# double the training itrs from 300.
+TD3Config.train_critics_itrs = 600
+TD3Config.batch_size = 256
+TD3Config.pg_batch_size = 256
+TD3Config.discount = 0.99
+TD3Config.target_update_rate = 0.005
+TD3Config.target_update_freq = 2
+TD3Config.smoothing_noise_variance = 0.2
+TD3Config.smoothing_noise_clip = 0.5
+TD3Config.adam_learning_rate = 3e-4
+TD3Config.gradient_steps = 10
+TD3Config.gradient_learning_rate = 0.001

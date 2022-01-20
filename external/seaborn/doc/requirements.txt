@@ -1,0 +1,7 @@
+docutils<0.18  # https://sourceforge.net/p/docutils/bugs/431/
+sphinx==3.3.1
+sphinx_bootstrap_theme==0.8.0
+numpydoc
+nbconvert
+ipykernel
+sphinx-issues

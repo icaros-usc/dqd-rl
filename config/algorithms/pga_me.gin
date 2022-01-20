@@ -1,0 +1,17 @@
+include "config/algorithms/td3.gin"
+TD3Config.train_critics_itrs = 300
+
+TD3Config.train = "objective"
+
+Manager.archive_type = @GridArchive
+Manager.emitter_types = [(@IsoLineEmitter, 1), (@PGAEmitter, 1)]
+Manager.is_dqd = False
+Manager.use_td3 = True
+Manager.call_jacobian = False
+
+IsoLineEmitter.iso_sigma = 0.005
+IsoLineEmitter.line_sigma = 0.05
+IsoLineEmitter.batch_size = 50
+
+PGAEmitter.sigma0 = 0.02
+PGAEmitter.batch_size = 50

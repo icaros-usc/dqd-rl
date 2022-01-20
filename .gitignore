@@ -1,0 +1,59 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/*
+.ipynb_checkpoints/*
+.coverage
+
+# Dask
+dask-worker-space/
+.*scheduler_info.json
+
+# MuJoCo
+mjkey.txt
+MUJOCO_LOG.TXT
+mujocopy-buildlock
+
+# Results
+results
+checkpoints/*
+logs/*
+slurm_logs/*
+*.log
+
+# Editor
+.vscode/*
+.*.swp
+*.vim
+
+# Miscellaneous
+.env
+ipp_nodes.txt
+.DS_Store
+quicksilver_config.json
+.fossa.yml
+env/
+
+# Figures
+metrics.pdf
+compare_evals.pdf
+clustering_demo.svg
+comparison.pdf
+comparison.png
+comparison_high_res.pdf
+comparison_high_res.png
+results_table.tex
+manifest.yaml
+min_manifest.yaml
+stats_tests/
+stats_tests.tex
+heatmap_figure.pdf
+heatmap_video.mp4
+heatmap_video/
+histogram_figure.pdf
+histogram_video.mp4
+histogram_video/
+figure_data.json
+
+# Singularity
+*.sif

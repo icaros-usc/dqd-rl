@@ -1,0 +1,8 @@
+*_files/
+_build/
+generated/
+examples/
+example_thumbs/*.png
+introduction.rst
+tutorial/*.rst
+docstrings/*.rst

@@ -1,0 +1,3 @@
+include "config/qd_hopper/shared.gin"
+include "config/algorithms/cma_mega_td3_es.gin"
+experiment.name = "CMA-MEGA (TD3, ES 100) QD Hopper"

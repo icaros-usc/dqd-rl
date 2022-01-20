@@ -1,0 +1,89 @@
+BootStrap: docker
+From: python:3.8.11-buster
+
+%files
+    requirements.txt /usr/project/python/requirements.txt
+    scripts/rm_mujoco_lock.sh /usr/project/mujoco/rm_mujoco_lock.sh
+    dask_config.yml /etc/dask/dask_config.yml
+
+%post
+    # Apt packages - Note: If we install Python here (as opposed to building
+    # from a Python container) we end up with one of the old versions in the
+    # apt repositories.
+    apt-get update
+    apt-get install -y \
+        wget \
+        git \
+        zip \
+        unzip \
+        libgl1-mesa-dev \
+        libgl1-mesa-glx \
+        mesa-utils \
+        libglew-dev \
+        libosmesa6-dev \
+        patchelf \
+        ffmpeg
+
+    # Microsoft fonts (particularly Times)
+    # https://stackoverflow.com/questions/60934639/install-fonts-in-linux-container-for-asp-net-core#62888227
+    sed -i'.bak' 's/$/ contrib/' /etc/apt/sources.list
+    apt-get update
+    apt-get install -y ttf-mscorefonts-installer fontconfig
+    fc-cache -f -v
+
+    # For pyvirtualdisplay https://github.com/ponty/pyvirtualdisplay/
+    apt-get install -y \
+        xvfb \
+        xserver-xephyr \
+        tigervnc-standalone-server \
+        xfonts-base
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+    # Project
+    PROJECT_ROOT=/usr/project
+    mkdir -p $PROJECT_ROOT
+
+    # MuJoCo
+    mkdir -p $PROJECT_ROOT/mujoco
+    wget https://mujoco.org/download/mujoco210-linux-x86_64.tar.gz
+    tar -xzvf mujoco210-linux-x86_64.tar.gz
+    mv mujoco210 $PROJECT_ROOT/mujoco/mujoco210
+    rm mujoco210-linux-x86_64.tar.gz
+
+    # mujoco-py
+    bash /usr/project/mujoco/rm_mujoco_lock.sh
+    export MUJOCO_PY_MUJOCO_PATH=$PROJECT_ROOT/mujoco/mujoco210
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PROJECT_ROOT/mujoco/mujoco210/bin
+    git clone https://github.com/icaros-usc/mujoco-py --depth 1 $PROJECT_ROOT/mujoco/mujoco-py
+    cd $PROJECT_ROOT/mujoco/mujoco-py
+    git reset --hard 53e78f2  # Pin to specific commit.
+    pip3 install --no-cache-dir -r requirements.txt
+    pip3 install --no-cache-dir -r requirements.dev.txt
+    python3 setup.py build install
+    cd -
+    bash /usr/project/mujoco/rm_mujoco_lock.sh
+
+    # Python
+    pip3 install -r $PROJECT_ROOT/python/requirements.txt
+
+%environment
+    export PROJECT_ROOT=/usr/project
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PROJECT_ROOT/mujoco/mujoco210/bin
+    export MUJOCO_PY_MUJOCO_PATH=$PROJECT_ROOT/mujoco/mujoco210
+
+    # So that MuJoCo visualization works (see
+    # https://github.com/openai/mujoco-py/issues/268)
+    export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
+
+    # Set X11 display for GUI output
+    export DISPLAY=":1"
+
+    # Set numpy to be single-threaded
+    export OPENBLAS_NUM_THREADS=1
+
+    # Detect package
+    export PYTHONPATH="."
+
+%runscript
+    echo "No runscript specified"

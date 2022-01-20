@@ -1,0 +1,37 @@
+# Shared configuration for QDWalker experiments.
+
+#
+# Manager
+#
+
+# Algorithm
+Manager.total_evals = 1000000
+Manager.n_evals = 1
+Manager.use_norm_obs = False
+Manager.experience_evals = 1
+
+# Logging
+Manager.archive_save_freq = -1
+Manager.reload_save_freq = 100
+Manager.best_robustness = 10
+
+#
+# Objective module
+#
+
+Manager.obj_name = "gym_control"
+GymControlConfig.env_id = "QDWalker2DBulletEnv-v0"
+GymControlConfig.return_type = "sum"
+GymControlConfig.obj_result_opts = {"aggregation": "mean"}
+GymControlConfig.init = "xavier"
+GymControlConfig.layer_sizes = (128, 128)
+GymControlConfig.action_noise = 0.0
+GymControlConfig.activation = "tanh"
+GymControlConfig.obs_collect_prob = 0.001
+
+#
+# Archives
+#
+
+GridArchive.dims = [32, 32]
+GridArchive.ranges = [[0, 1], [0, 1]]

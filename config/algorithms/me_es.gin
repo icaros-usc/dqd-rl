@@ -1,0 +1,18 @@
+# ME-ES Explore-Exploit config suitable for QDGym.
+
+experiment.use_me_es = True
+
+# ME-ES uses action noise in the samples, but turns off the action noise when
+# evaluating the solution for archive insertion. No other algorithm uses action
+# noise, so we only add the configuration here.
+GymControlConfig.action_noise = 0.01
+
+me_es_main.algo = "mees_explore_exploit"
+me_es_main.config = "mees_damage"
+
+# 5000 * 100 * 1 * 2 (mirror sampling) = 1M
+me_es_main.n_iterations = 5000
+me_es_main.num_workers = 100
+me_es_main.batch_size = 1
+me_es_main.eval_batches_per_step = 1
+me_es_main.nb_consecutive_steps = 10

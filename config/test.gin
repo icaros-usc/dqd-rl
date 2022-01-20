@@ -1,0 +1,17 @@
+# Include this with another config in order to set up test configuration.
+
+Manager.generations = 5
+Manager.n_evals = 1
+Manager.best_robustness = 2
+
+GaussianEmitter.batch_size = 4
+IsoLineEmitter.batch_size = 4
+GradientImprovementEmitter.batch_size = 4
+GradientImprovementEmitter.sample_batch_size = 4
+PGAEmitter.batch_size = 3
+
+me_es_main.n_iterations = 10  # Multiple of nb_consecutive_steps
+me_es_main.nb_consecutive_steps = 2
+me_es_main.num_workers = 2
+me_es_main.batch_size = 1
+me_es_main.eval_batches_per_step = 1
