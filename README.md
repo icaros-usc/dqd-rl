@@ -31,7 +31,7 @@ the paper:
 For more info, visit the following links:
 
 - [Website](https://dqd-rl.github.io)
-- arXiv: (forthcoming)
+- [arXiv](https://arxiv.org/abs/2202.03666)
 - [Supplemental Material](https://www.dropbox.com/sh/adjj2w0mgphm9nu/AADXL4C8zyRNlS60STb62jGta?dl=0)
 
 To cite this paper, please use the following bibtex:
