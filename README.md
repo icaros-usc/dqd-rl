@@ -38,14 +38,16 @@ To cite this paper, please use the following bibtex:
 
 ```bibtex
 @misc{tjanaka2022approximating,
-      title={Approximating Gradients for Differentiable Quality Diversity
-             in Reinforcement Learning},
-      author={Bryon Tjanaka and Matthew C. Fontaine and Julian Togelius
-              and Stefanos Nikolaidis},
-      year={2022},
-      eprint={2202.03666},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+  title         = {Approximating Gradients for Differentiable Quality Diversity
+                   in Reinforcement Learning},
+  author        = {Bryon Tjanaka and Matthew C. Fontaine and Julian Togelius
+                   and Stefanos Nikolaidis},
+  year          = {2022},
+  eprint        = {2202.03666},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://dqd-rl.github.io},
+  note          = "\url{https://dqd-rl.github.io}",
 }
 ```
 
