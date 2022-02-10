@@ -37,7 +37,7 @@ then
 fi
 
 if [ -n "$RELOAD_PATH" ]; then
-  RELOAD_ARG="--reload ${RELOAD_PATH}"
+  RELOAD_ARG="--reload-dir ${RELOAD_PATH}"
 else
   RELOAD_ARG=""
 fi

@@ -87,7 +87,7 @@ while getopts "dr:" opt; do
       ;;
     r)
       echo "Using RELOAD: $OPTARG"
-      RELOAD_ARG="--reload $OPTARG"
+      RELOAD_ARG="--reload-dir $OPTARG"
       ;;
   esac
 done
