@@ -8,25 +8,23 @@ Differentiable Quality Diversity in Reinforcement Learning" by
 [Stefanos Nikolaidis](https://stefanosnikolaidis.net). Below is the abstract of
 the paper:
 
-> Consider a walking agent that must adapt to damage. To approach this task, we
-> can train a collection of policies and have the agent select a suitable policy
-> when damaged. Training this collection may be viewed as a quality diversity
-> (QD) optimization problem, where we search for solutions (policies) which
-> maximize an objective (walking forward) while spanning a set of measures
-> (measurable characteristics). Recent work shows that differentiable quality
-> diversity (DQD) algorithms greatly accelerate QD optimization when exact
-> gradients are available for the objective and measures. However, such
-> gradients are typically unavailable in RL settings due to non-differentiable
-> environments. To apply DQD in RL settings, we propose to approximate objective
-> and measure gradients with evolution strategies and actor-critic methods. We
-> develop two variants of the DQD algorithm CMA-MEGA, each with different
-> gradient approximations, and evaluate them on four simulated walking tasks.
-> One variant achieves comparable performance (QD score) with the
-> state-of-the-art PGA-MAP-Elites in two tasks. The other variant performs
-> comparably in all tasks but is less efficient than PGA-MAP-Elites in two
-> tasks. These results provide insight into the limitations of CMA-MEGA in
-> domains that require rigorous optimization of the objective and where exact
-> gradients are unavailable.
+> Consider the problem of training robustly capable agents. One approach is to
+> generate a diverse collection of agent polices. Training can then be viewed as
+> a quality diversity (QD) optimization problem, where we search for a
+> collection of performant policies that are diverse with respect to quantified
+> behavior. Recent work shows that differentiable quality diversity (DQD)
+> algorithms greatly accelerate QD optimization when exact gradients are
+> available. However, agent policies typically assume that the environment is
+> not differentiable. To apply DQD algorithms to training agent policies, we
+> must approximate gradients for performance and behavior. We propose two
+> variants of the current state-of-the-art DQD algorithm that compute gradients
+> via approximation methods common in reinforcement learning (RL). We evaluate
+> our approach on four simulated locomotion tasks. One variant achieves results
+> comparable to the current state-of-the-art in combining QD and RL, while the
+> other performs comparably in two locomotion tasks. These results provide
+> insight into the limitations of current DQD algorithms in domains where
+> gradients must be approximated. Source code is available at
+> https://github.com/icaros-usc/dqd-rl
 
 For more info, visit the following links:
 
