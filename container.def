@@ -44,6 +44,13 @@ From: python:3.8.11-buster
     PROJECT_ROOT=/usr/project
     mkdir -p $PROJECT_ROOT
 
+    # Python - this must go before MuJoCo because MuJoCo installs the highest
+    # numpy version available if numpy is not installed already. This numpy
+    # version would mismatch with the version (1.20.2) in requirements.txt,
+    # which would crash pybullet since pybullet would be compiled with 1.20.2
+    # but be running with a later version.
+    pip3 install -r $PROJECT_ROOT/python/requirements.txt
+
     # MuJoCo
     mkdir -p $PROJECT_ROOT/mujoco
     wget https://mujoco.org/download/mujoco210-linux-x86_64.tar.gz
@@ -63,9 +70,6 @@ From: python:3.8.11-buster
     python3 setup.py build install
     cd -
     bash /usr/project/mujoco/rm_mujoco_lock.sh
-
-    # Python
-    pip3 install -r $PROJECT_ROOT/python/requirements.txt
 
 %environment
     export PROJECT_ROOT=/usr/project
