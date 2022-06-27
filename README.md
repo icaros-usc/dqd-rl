@@ -98,10 +98,9 @@ implementation. If you use this code in your research, please also cite pyribs:
 
 ## Getting Started
 
-1. **Clone the repo:** We include the development version of Seaborn as a
-   submodule, so make sure to add `--recurse-submodules`.
+1. **Clone the repo:**
    ```bash
-   git clone --recurse-submodules https://github.com/icaros-usc/dqd-rl.git
+   git clone https://github.com/icaros-usc/dqd-rl.git
    ```
 1. **Install Singularity:** All of our code runs in a
    [Singularity / Apptainer](https://apptainer.org) container. See
